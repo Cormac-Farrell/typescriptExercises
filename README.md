@@ -1,0 +1,2 @@
+# typescriptExercises
+ distributes systems
