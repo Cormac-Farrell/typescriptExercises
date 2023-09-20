@@ -22,8 +22,8 @@ const friend1 : friend = {
   //   -------------------
 
   interface ColleagueHistory {
-    current: Colleague[],
-    former: Colleague[]
+    current: colleague[],
+    former: colleague[]
   }
 
   interface colleague {
