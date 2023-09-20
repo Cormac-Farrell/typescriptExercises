@@ -1,43 +1,24 @@
-interface friend {
-    name: string;
-    phone: string;
-    age: number
-}
+import {Friend, Colleague, ColleagueHistory } from './myTypes'
 
-const friend1 : friend = {
+
+const friend1 : Friend = {
     name: "Paul Fleming",
     phone: "087-12345",
     age: 25,
   };
   
-  const friend2 : friend = {
+  const friend2 : Friend = {
     name: "Jane Costello",
     phone: "086--12345",
     age: 31,
   };
   
-  const friends = [friend1, friend2];
-  console.log(friends[1]);
+  export const friends = [friend1, friend2];
+ // console.log(friends[1]);
   
   //   -------------------
 
-  interface ColleagueHistory {
-    current: colleague[],
-    former: colleague[]
-  }
-
-  interface colleague {
-    name: string;
-    department: string;
-    contact: {
-      email: string;
-      extension: number;
-    },
-    
-}
-
-
-  const colleague1 : colleague = {
+  const colleague1 : Colleague = {
     name: "Ralph Graham",
     department: "Engineering",
     contact: {
@@ -46,7 +27,7 @@ const friend1 : friend = {
     },
   };
   
-  const colleague2 : colleague = {
+  const colleague2 : Colleague = {
     name: "Patti Burke",
     department: "Finance",
     contact: {
@@ -55,7 +36,7 @@ const friend1 : friend = {
     },
   };
   
-  const colleague3 : colleague = {
+  const colleague3 : Colleague = {
     name: "Dean Sullivan",
     department: "HR",
     contact: {
@@ -64,9 +45,11 @@ const friend1 : friend = {
     },
   };
 
-  const colleagues = {
+  export const Colleagues : ColleagueHistory = {
     current: [colleague1, colleague2, colleague3],
     former: [],
   };
   
-  console.log(colleagues.current[0]);
+  export const colleagues = [colleague1, colleague2, colleague3];
+  //console.log(colleagues.current[0]);
+
