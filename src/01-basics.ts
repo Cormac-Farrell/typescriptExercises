@@ -21,7 +21,10 @@ const friend1 : friend = {
   
   //   -------------------
 
-
+  interface ColleagueHistory {
+    current: Colleague[],
+    former: Colleague[]
+  }
 
   interface colleague {
     name: string;
@@ -30,6 +33,7 @@ const friend1 : friend = {
       email: string;
       extension: number;
     },
+    
 }
 
 
@@ -59,6 +63,7 @@ const friend1 : friend = {
       extension: 125,
     },
   };
+
   const colleagues = {
     current: [colleague1, colleague2, colleague3],
     former: [],
