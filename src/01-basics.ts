@@ -1,16 +1,16 @@
-interface Friend {
+interface friend {
     name: string;
     phone: string;
     age: number
 }
 
-const friend1 = {
+const friend1 : friend = {
     name: "Paul Fleming",
     phone: "087-12345",
     age: 25,
   };
   
-  const friend2 = {
+  const friend2 : friend = {
     name: "Jane Costello",
     phone: "086--12345",
     age: 31,
