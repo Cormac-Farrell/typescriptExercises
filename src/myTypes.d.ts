@@ -14,6 +14,6 @@ export interface Colleague {
   }
 
 export interface ColleagueHistory {
-  current: Colleague[],
-  former: Colleague[]
+  current: colleague[],
+  former: colleague[]
 }
