@@ -1,5 +1,6 @@
 import {Friend, Colleague } from './myTypes'
-import { friends, colleagues, Colleagues } from "./01-basics";
+import { friends, Colleagues } from "./01-basics";
+import { EmailContact } from "./myTypes";
 
 function older(f: Friend) : string {
      f.age += 1
@@ -18,8 +19,10 @@ function highestExtension(cs: Colleague[]) { // Inferred retun type
   );
   return result[cs.length - 1];
 }
+console.log(highestExtension(Colleagues.current));
 
-function addColleagues(
+
+function addColleague(
     ch: Colleague[], 
     name: string, 
     department: string, 
@@ -36,5 +39,32 @@ function addColleagues(
     ch.push(newColleague);
   }
 
-addColleagues(Colleagues.current, "Sheild O Connell", "HR", "soc@here.com");
+  console.log(highestExtension(Colleagues.current));
+addColleague(Colleagues.current, "Sheild O Connell", "HR", "soc@here.com");
 console.log(Colleagues.current.filter((c) => c.name === "Sheild O Connell"));
+
+
+function sortColleagues(
+  colleagues: Colleague[],
+  sorter: (c1: Colleague, c2: Colleague) => number
+): EmailContact[] {
+  const sorted = colleagues.sort(sorter); // Colleague[] inferred
+  const result: EmailContact[] = sorted.map((ce) => ({ name: ce.name, email: ce.contact.email }));
+  return result 
+}
+
+console.log(sortColleagues(Colleagues.current, (a, b) => a.contact.extension - b.contact.extension));
+console.log(sortColleagues(Colleagues.current, (a, b) => a.name.length - b.name.length));
+
+function findFriends(friends: Friend[], filter: (f: Friend) => boolean): Friend[] {
+  const result: Friend[] = [];
+  for (const f of friends) {
+    if (filter(f)) {
+      result.push(f);
+    }
+  }
+  return result;
+}
+
+console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
+console.log(findFriends(friends, (friend) => friend.age < 35));
