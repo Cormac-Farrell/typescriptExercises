@@ -57,6 +57,7 @@ function findFriends(friends: Friend[], filter: (f: Friend) => boolean): Friend[
 console.log(findFriends(friends, (friend) => friend.name.startsWith('Pa')));
 console.log(findFriends(friends, (friend) => friend.age < 35));
 
+
 function sortColleagues(
   colleagues: Colleague[],
   sorter: (c1: Colleague, c2: Colleague) => number,
@@ -73,4 +74,16 @@ function sortColleagues(
 // Test invocations
 console.log(sortColleagues(Colleagues.current, (a, b) => (a.contact.extension - b.contact.extension),3));
 console.log(sortColleagues(Colleagues.current, (a, b) => (a.name.length - b.name.length),1));
-console.log(sortColleagues(Colleagues.current, (a, b) => (a.name.length - b.name.length))); // NEW
+console.log(sortColleagues(Colleagues.current, (a, b) => (a.name.length - b.name.length))); // 
+
+function addInterest(f: Friend, interest: string): Friend {
+  if (f.interests === undefined) {
+    f.interests = [interest];
+  } else {
+    f.interests.push(interest);
+  }
+  return f;
+}
+
+
+console.log(addInterest(friends[0], 'Politics'))
