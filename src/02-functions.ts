@@ -86,4 +86,4 @@ function addInterest(f: Friend, interest: string): Friend {
 }
 
 
-console.log(addInterest(friends[0], 'Politics'))
+console.log(addInterest(friends[0], 'Skiing'))
