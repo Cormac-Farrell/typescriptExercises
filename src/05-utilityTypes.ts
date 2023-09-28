@@ -40,3 +40,21 @@ function generateEventPass(colleague: Colleague): EventPass {
     };
   }
   console.log(generateEventPass(Colleagues.current[0]));
+
+  function intersection(
+    friends: Friend[],
+    colleagues: Colleague[]
+  ): (Friend & Colleague)[] {
+    let result: any[] = [  ];
+    friends.reduce((res, friend) => {
+      const colleague = colleagues.find((col) => col.name === friend.name);
+      if (colleague) {
+        // Colleague is also a Friend
+        res.push({ ...friend, ...colleague });
+      }
+      return res;
+    }, result);
+    return result;
+  }
+  
+  console.log(intersection(friends, Colleagues.current));
