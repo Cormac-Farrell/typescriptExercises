@@ -1,21 +1,42 @@
+import { friends, colleagues, Colleagues } from "./01-basics";
+import { Friend, Colleague, SecureFriendContact, FriendPartial, EventPass } from "./myTypes";
 
-import {friends, colleagues, Colleagues} from './01-basics'
-import {Friend, Colleague} from './myTypes'
-
-function findMatch<T>( data : T[], criteria: (d: T) => boolean ) : T | undefined {
-    return data.find((criteria))
+function updateFriend(friend: Friend, updates: FriendPartial ) : Friend {
+  return { ...friend, ...updates}
 }
 
-console.log(findMatch<Friend>(friends, (f) => f.name.startsWith('Jane')  ))
-console.log(findMatch<Colleague>(Colleagues.current, (c) => c.department === 'Finance'  ))
+console.log(updateFriend(friends[0], {
+  phone: '08712345',
+  dob: new Date("1998-10-22")
+}))
 
-function sortByMatch<T>(array: T[], criteria: (d: T, f: T) => number,) : T[] | undefined{
-    let selectedarray = array.sort((criteria))
-    return selectedarray
-}
+function secureFindFriends(
+    friends: Friend[],
+    criteria: (f: Friend) => boolean
+  ): SecureFriendContact[] {
+    const matches = friends.filter(criteria);
+    return matches.map((f) => {
+      const secure: SecureFriendContact = {
+        name: f.name,
+        phone: f.phone,
+      };
+      return secure;
+    });
+  }
+  let result = secureFindFriends(
+      friends,
+      (f: Friend) => f.age < 30
+  )
+  console.log(result)
+friends[0].phone = '08654321';
 
-// Sort friends by age
-console.log(sortByMatch<Friend>(friends, (a, b) => a.age - b.age));
 
-// Sort colleagues by extension number
-console.log(sortByMatch<Colleague>(Colleagues.current,(a, b) => a.contact.extension - b.contact.extension));
+function generateEventPass(colleague: Colleague): EventPass {
+    const passCode = Math.round(Math.random() * (1000 - 1) + 1);
+    return {
+      name: colleague.name,
+      department: colleague.department,
+      passCode: passCode,
+    };
+  }
+  console.log(generateEventPass(Colleagues.current[0]));

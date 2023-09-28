@@ -1,3 +1,4 @@
+
 import {friends, colleagues, Colleagues} from './01-basics'
 import {Friend, Colleague} from './myTypes'
 
@@ -9,8 +10,8 @@ console.log(findMatch<Friend>(friends, (f) => f.name.startsWith('Jane')  ))
 console.log(findMatch<Colleague>(Colleagues.current, (c) => c.department === 'Finance'  ))
 
 function sortByMatch<T>(array: T[], criteria: (d: T, f: T) => number,) : T[] | undefined{
-    let chosenArray = array.sort((criteria))
-    return chosenArray
+    let selectedarray = array.sort((criteria))
+    return selectedarray
 }
 
 // Sort friends by age
